@@ -1195,7 +1195,7 @@ li.social__item:hover {
   overflow: visible;
 }
 .cruise-card:hover .cruise-card__info {
-  bottom: 0;
+  top: 0;
   left: 0;
   transform: perspective(600px) scale(1) rotateX(0);
 }
@@ -1218,7 +1218,7 @@ li.social__item:hover {
 .cruise-card__info {
   position: absolute;
   left: 0;
-  bottom: 0;
+  top: 0;
   width: 100%;
   padding: 35px 25px;
   background-color: #011c40;
