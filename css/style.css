@@ -416,6 +416,11 @@ body.popup-show::after {
     z-index: 2;*/
   }
 }
+@max-width ($mobile) {
+  .header__menu .menu__list {
+    transform: translate(-100%, 0);
+  }
+}
 
 .menu__list {
   display: flex;
@@ -508,7 +513,6 @@ body.popup-show::after {
 }
 @media (max-width: 47.99875em) {
   .menu__list {
-    transform: translate(-100%, 0);
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.1s;
   }
 }
@@ -613,7 +617,6 @@ body.popup-show::after {
   .footer__map {
     flex: 0 0 100%;
     width: 100%;
-    order: 2;
   }
 }
 .footer__map iframe {
@@ -1199,8 +1202,13 @@ li.social__item:hover {
   left: 0;
   transform: perspective(600px) scale(1) rotateX(0);
 }
+.cruise-card:hover .cruise-card__front {
+  transform: perspective(600px) scale(0) rotateX(45deg);
+}
 .cruise-card__front {
   position: relative;
+  transform: perspective(600px) scale(1) rotateX(0);
+  transition: all 0.3s ease 0s;
 }
 .cruise-card__front .cruise-card__title {
   position: absolute;
@@ -1226,6 +1234,11 @@ li.social__item:hover {
   row-gap: 25px;
   transform: perspective(600px) scale(0) rotateX(45deg);
   transition: all 0.3s ease-in 0s;
+}
+@media (max-width: 47.99875em) {
+  .cruise-card__info {
+    height: 100%;
+  }
 }
 .cruise-card__info .cruise-card__title {
   margin-bottom: 5px;
