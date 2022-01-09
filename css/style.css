@@ -483,7 +483,7 @@ body.popup-show::after {
   }
 }
 
-.menu-open .menu__body {
+.menu-open .header .menu__body {
   left: 0;
 }
 .menu-open .menu__list {
