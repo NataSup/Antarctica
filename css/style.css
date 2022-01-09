@@ -504,7 +504,7 @@ body.popup-show::after {
 .menu-open .header .menu__body {
   left: 0;
 }
-.menu-open .menu__list {
+.menu-open .header__menu .menu__list {
   transform: translate(0);
 }
 .menu-open .menu__link:after {
