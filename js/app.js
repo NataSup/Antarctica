@@ -309,17 +309,17 @@
       this.options.logging && n(`[Попапос]: ${t}`);
     }
   })({});
-  let l = (t, e = !1, o = 500, i = 0) => {
+  let a = (t, e = !1, o = 500, i = 0) => {
     const r = "string" == typeof t ? document.querySelector(t) : t;
     if (r) {
-      let l = "",
-        a = 0;
+      let a = "",
+        l = 0;
       e &&
-        ((l = "header.header"), (a = document.querySelector(l).offsetHeight));
+        ((a = "header.header"), (l = document.querySelector(a).offsetHeight));
       let c = {
         speedAsDuration: !0,
         speed: o,
-        header: l,
+        header: a,
         offset: i,
         easing: "easeOutQuad",
       };
@@ -331,12 +331,12 @@
         new SmoothScroll().animateScroll(r, "", c);
       else {
         let t = r.getBoundingClientRect().top + scrollY;
-        window.scrollTo({ top: a ? t - a : t, behavior: "smooth" });
+        window.scrollTo({ top: l ? t - l : t, behavior: "smooth" });
       }
       n(`[gotoBlock]: Юхуу...едем к ${t}`);
     } else n(`[gotoBlock]: Ой ой..Такого блока нет на странице: ${t}`);
   };
-  let a = {
+  let l = {
     getErrors(t) {
       let e = 0,
         o = t.querySelectorAll("*[data-required]");
@@ -389,7 +389,7 @@
             const e = o[t];
             e.parentElement.classList.remove("_form-focus"),
               e.classList.remove("_form-focus"),
-              a.removeError(e);
+              l.removeError(e);
           }
           let s = e.querySelectorAll(".checkbox__input");
           if (s.length > 0)
@@ -558,10 +558,10 @@
           }),
             t.addEventListener("reset", function (t) {
               const e = t.target;
-              a.formClean(e);
+              l.formClean(e);
             });
       async function s(t, o) {
-        if (0 === (e ? a.getErrors(t) : 0)) {
+        if (0 === (e ? l.getErrors(t) : 0)) {
           if (t.hasAttribute("data-ajax")) {
             o.preventDefault();
             const e = t.getAttribute("action")
@@ -581,7 +581,7 @@
         } else {
           o.preventDefault();
           const e = t.querySelector("._form-error");
-          e && t.hasAttribute("data-goto-error") && l(e, !0, 1e3);
+          e && t.hasAttribute("data-goto-error") && a(e, !0, 1e3);
         }
       }
       function i(e) {
@@ -594,8 +594,36 @@
               o && t.popup.open(o);
             }
           }, 0),
-          a.formClean(e),
+          l.formClean(e),
           n(`[Формы]: ${"Форма отправлена!"}`);
       }
-    })(!0);
+    })(!0),
+    (function () {
+      function t(t) {
+        if ("click" === t.type) {
+          const e = t.target;
+          if (e.closest("[data-goto]")) {
+            const o = e.closest("[data-goto]"),
+              s = o.dataset.goto ? o.dataset.goto : "",
+              i = !!o.hasAttribute("data-goto-header"),
+              n = o.dataset.gotoSpeed ? o.dataset.gotoSpeed : "500";
+            a(s, i, n), t.preventDefault();
+          }
+        } else if ("watcherCallback" === t.type && t.detail) {
+          const e = t.detail.entry,
+            o = e.target;
+          if ("navigator" === o.dataset.watch) {
+            const t = o.id,
+              s =
+                (document.querySelector("[data-goto]._navigator-active"),
+                document.querySelector(`[data-goto="${t}"]`));
+            e.isIntersecting
+              ? s && s.classList.add("_navigator-active")
+              : s && s.classList.remove("_navigator-active");
+          }
+        }
+      }
+      document.addEventListener("click", t),
+        document.addEventListener("watcherCallback", t);
+    })();
 })();
