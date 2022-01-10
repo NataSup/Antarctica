@@ -101,14 +101,16 @@ h6 {
   font-size: inherit;
 }
 
+body {
+  /*.lock & {
+  	overflow: hidden;
+  	touch-action: none;
+  }*/
+}
 @media (max-width: 47.99875em) {
   body.lock {
     overflow: hidden;
   }
-}
-.lock body {
-  overflow: hidden;
-  touch-action: none;
 }
 .wrapper {
   min-height: 100%;
@@ -322,6 +324,7 @@ body.popup-show::after {
   width: 70px;
   height: 38px;
   transition: all 0.5s ease 0s;
+  max-width: 100%;
 }
 @media (max-width: 63.93625em) {
   .logo a svg {
@@ -348,24 +351,86 @@ body.popup-show::after {
 }*/
 .header {
   color: #f9fbfd;
-  position: absolute;
-  top: 35px;
+  position: fixed;
+  z-index: 33;
+  /*top: 35px;*/
   width: 100%;
-  min-height: 6.75rem;
+  /*min-height: rem(108);*/
+  transition: all 0.3s ease 0s;
+}
+@media (min-width: 85.375em) {
+  .header {
+    padding-top: 2.375rem;
+  }
+}
+@media (min-width: 47.99875em) and (max-width: 85.375em) {
+  .header {
+    padding-top: clamp( 1.875rem , 1.2328977292rem  +  1.3377479014vw , 2.375rem );
+  }
+}
+@media (max-width: 47.99875em) {
+  .header {
+    padding-top: 1.875rem;
+  }
+}
+@media (min-width: 85.375em) {
+  .header {
+    padding-bottom: 2.375rem;
+  }
+}
+@media (min-width: 47.99875em) and (max-width: 85.375em) {
+  .header {
+    padding-bottom: clamp( 1.875rem , 1.2328977292rem  +  1.3377479014vw , 2.375rem );
+  }
+}
+@media (max-width: 47.99875em) {
+  .header {
+    padding-bottom: 1.875rem;
+  }
+}
+.header._header-scroll:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(180deg, #020024 8%, rgba(9, 9, 121, 0.9247898989) 49%, rgba(9, 9, 121, 0.9247898989) 69%, rgba(9, 13, 121, 0.3) 85%, rgba(9, 13, 121, 0) 100%);
+  transition: all 0.3s ease 0s;
+}
+@media (max-width: 63.93625em) {
+  .header {
+    /*@include adaptiveValue("top", 30, 20, 767.98, 319.98, 1);*/
+  }
 }
 @media (max-width: 63.93625em) and (min-width: 47.99875em) {
   .header {
-    top: 1.875rem;
+    padding-top: 1.875rem;
   }
 }
-@media (max-width: 63.93625em) and (min-width: 19.99875em) and (max-width: 47.99875em) {
+@media (max-width: 63.93625em) and (min-width: 29.99875em) and (max-width: 47.99875em) {
   .header {
-    top: clamp( 1.25rem , 0.8035993304rem  +  2.2321428571vw , 1.875rem );
+    padding-top: clamp( 1.25rem , 0.2083767361rem  +  3.4722222222vw , 1.875rem );
   }
 }
-@media (max-width: 63.93625em) and (max-width: 19.99875em) {
+@media (max-width: 63.93625em) and (max-width: 29.99875em) {
   .header {
-    top: 1.25rem;
+    padding-top: 1.25rem;
+  }
+}
+@media (max-width: 63.93625em) and (min-width: 47.99875em) {
+  .header {
+    padding-bottom: 1.875rem;
+  }
+}
+@media (max-width: 63.93625em) and (min-width: 29.99875em) and (max-width: 47.99875em) {
+  .header {
+    padding-bottom: clamp( 1.25rem , 0.2083767361rem  +  3.4722222222vw , 1.875rem );
+  }
+}
+@media (max-width: 63.93625em) and (max-width: 29.99875em) {
+  .header {
+    padding-bottom: 1.25rem;
   }
 }
 .header__body {
@@ -404,6 +469,9 @@ body.popup-show::after {
     font-size: 1.125rem;
   }
 }
+.header__logo {
+  position: relative;
+}
 @media (max-width: 47.99875em) {
   .header__menu {
     /*background-color: $WhiteColor;
@@ -439,6 +507,7 @@ body.popup-show::after {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  row-gap: 10px;
 }
 @media (max-width: 47.99875em) {
   .menu__list {
@@ -1077,6 +1146,8 @@ li.social__item:hover {
   display: flex;
   /*align-items: flex-start;*/
   margin: 0 -20px;
+  flex-wrap: wrap;
+  row-gap: 20px;
 }
 @media (max-width: 63.93625em) {
   .advantages__body {
@@ -1206,6 +1277,7 @@ li.social__item:hover {
 .cruise-card {
   position: relative;
   overflow: hidden;
+  min-height: 386px;
 }
 .cruise-card:hover {
   overflow: visible;
@@ -1213,15 +1285,18 @@ li.social__item:hover {
 .cruise-card:hover .cruise-card__info {
   top: 0;
   left: 0;
+  z-index: 3;
   transform: perspective(600px) scale(1) rotateX(0);
 }
 .cruise-card:hover .cruise-card__front {
+  z-index: 3;
   transform: perspective(600px) scale(0) rotateX(45deg);
 }
 .cruise-card__front {
   position: relative;
   transform: perspective(600px) scale(1) rotateX(0);
   transition: all 0.3s ease 0s;
+  backface-visibility: hidden;
 }
 .cruise-card__front .cruise-card__title {
   position: absolute;
@@ -1240,6 +1315,7 @@ li.social__item:hover {
   position: absolute;
   left: 0;
   top: 0;
+  min-height: 386px;
   width: 100%;
   padding: 35px 25px;
   background-color: #011c40;
@@ -1247,6 +1323,7 @@ li.social__item:hover {
   row-gap: 25px;
   transform: perspective(600px) scale(0) rotateX(45deg);
   transition: all 0.3s ease-in 0s;
+  backface-visibility: hidden;
 }
 @media (max-width: 47.99875em) {
   .cruise-card__info {
