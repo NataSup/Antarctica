@@ -2,18 +2,18 @@
   "use strict";
   const t = {};
   let e = !0,
-    o = (t = 500) => {
-      document.documentElement.classList.contains("lock") ? s(t) : i(t);
-    },
     s = (t = 500) => {
-      let o = document.querySelector("body");
+      document.documentElement.classList.contains("lock") ? o(t) : i(t);
+    },
+    o = (t = 500) => {
+      let s = document.querySelector("body");
       if (e) {
-        let s = document.querySelectorAll("[data-lp]");
+        let o = document.querySelectorAll("[data-lp]");
         setTimeout(() => {
-          for (let t = 0; t < s.length; t++) {
-            s[t].style.paddingRight = "0px";
+          for (let t = 0; t < o.length; t++) {
+            o[t].style.paddingRight = "0px";
           }
-          (o.style.paddingRight = "0px"),
+          (s.style.paddingRight = "0px"),
             document.documentElement.classList.remove("lock");
         }, t),
           (e = !1),
@@ -23,16 +23,16 @@
       }
     },
     i = (t = 500) => {
-      let o = document.querySelector("body");
+      let s = document.querySelector("body");
       if (e) {
-        let s = document.querySelectorAll("[data-lp]");
-        for (let t = 0; t < s.length; t++) {
-          s[t].style.paddingRight =
+        let o = document.querySelectorAll("[data-lp]");
+        for (let t = 0; t < o.length; t++) {
+          o[t].style.paddingRight =
             window.innerWidth -
             document.querySelector(".wrapper").offsetWidth +
             "px";
         }
-        (o.style.paddingRight =
+        (s.style.paddingRight =
           window.innerWidth -
           document.querySelector(".wrapper").offsetWidth +
           "px"),
@@ -49,8 +49,8 @@
     }, 0);
   }
   function r(t) {
-    return t.filter(function (t, e, o) {
-      return o.indexOf(t) === e;
+    return t.filter(function (t, e, s) {
+      return s.indexOf(t) === e;
     });
   }
   t.popup = new (class {
@@ -200,8 +200,8 @@
             )}?rel=0&showinfo=0&autoplay=1`,
             e = document.createElement("iframe");
           e.setAttribute("allowfullscreen", "");
-          const o = this.options.setAutoplayYoutube ? "autoplay;" : "";
-          e.setAttribute("allow", `${o}; encrypted-media`),
+          const s = this.options.setAutoplayYoutube ? "autoplay;" : "";
+          e.setAttribute("allow", `${s}; encrypted-media`),
             e.setAttribute("src", t),
             this.targetOpen.element.querySelector(
               `[${this.options.youtubePlaceAttribute}]`
@@ -217,7 +217,7 @@
             this.options.classes.popupActive
           ),
           document.body.classList.add(this.options.classes.bodyActive),
-          this._reopen ? (this._reopen = !1) : o(),
+          this._reopen ? (this._reopen = !1) : s(),
           this.targetOpen.element.setAttribute("aria-hidden", "false"),
           (this.previousOpen.selector = this.targetOpen.selector),
           (this.previousOpen.element = this.targetOpen.element),
@@ -256,7 +256,7 @@
           this.previousOpen.element.setAttribute("aria-hidden", "true"),
           this._reopen ||
             (document.body.classList.remove(this.options.classes.bodyActive),
-            o(),
+            s(),
             (this.isOpen = !1)),
           this._removeHash(),
           this._selectorOpen &&
@@ -294,10 +294,10 @@
     }
     _focusCatch(t) {
       const e = this.targetOpen.element.querySelectorAll(this._focusEl),
-        o = Array.prototype.slice.call(e),
-        s = o.indexOf(document.activeElement);
-      t.shiftKey && 0 === s && (o[o.length - 1].focus(), t.preventDefault()),
-        t.shiftKey || s !== o.length - 1 || (o[0].focus(), t.preventDefault());
+        s = Array.prototype.slice.call(e),
+        o = s.indexOf(document.activeElement);
+      t.shiftKey && 0 === o && (s[s.length - 1].focus(), t.preventDefault()),
+        t.shiftKey || o !== s.length - 1 || (s[0].focus(), t.preventDefault());
     }
     _focusTrap() {
       const t = this.previousOpen.element.querySelectorAll(this._focusEl);
@@ -309,7 +309,7 @@
       this.options.logging && n(`[Попапос]: ${t}`);
     }
   })({});
-  let a = (t, e = !1, o = 500, i = 0) => {
+  let a = (t, e = !1, s = 500, i = 0) => {
     const r = "string" == typeof t ? document.querySelector(t) : t;
     if (r) {
       let a = "",
@@ -318,14 +318,14 @@
         ((a = "header.header"), (l = document.querySelector(a).offsetHeight));
       let c = {
         speedAsDuration: !0,
-        speed: o,
+        speed: s,
         header: a,
         offset: i,
         easing: "easeOutQuad",
       };
       if (
         (document.documentElement.classList.contains("menu-open") &&
-          (s(), document.documentElement.classList.remove("menu-open")),
+          (o(), document.documentElement.classList.remove("menu-open")),
         "undefined" != typeof SmoothScroll)
       )
         new SmoothScroll().animateScroll(r, "", c);
@@ -339,10 +339,10 @@
   let l = {
     getErrors(t) {
       let e = 0,
-        o = t.querySelectorAll("*[data-required]");
+        s = t.querySelectorAll("*[data-required]");
       return (
-        o.length &&
-          o.forEach((t) => {
+        s.length &&
+          s.forEach((t) => {
             (null === t.offsetParent && "SELECT" !== t.tagName) ||
               t.disabled ||
               (e += this.validateInput(t));
@@ -384,24 +384,24 @@
     formClean(e) {
       e.reset(),
         setTimeout(() => {
-          let o = e.querySelectorAll("input,textarea");
-          for (let t = 0; t < o.length; t++) {
-            const e = o[t];
+          let s = e.querySelectorAll("input,textarea");
+          for (let t = 0; t < s.length; t++) {
+            const e = s[t];
             e.parentElement.classList.remove("_form-focus"),
               e.classList.remove("_form-focus"),
               l.removeError(e);
           }
-          let s = e.querySelectorAll(".checkbox__input");
-          if (s.length > 0)
-            for (let t = 0; t < s.length; t++) {
-              s[t].checked = !1;
+          let o = e.querySelectorAll(".checkbox__input");
+          if (o.length > 0)
+            for (let t = 0; t < o.length; t++) {
+              o[t].checked = !1;
             }
           if (t.select) {
-            let o = e.querySelectorAll(".select");
-            if (o.length)
-              for (let e = 0; e < o.length; e++) {
-                const s = o[e].querySelector("select");
-                t.select.selectBuild(s);
+            let s = e.querySelectorAll(".select");
+            if (s.length)
+              for (let e = 0; e < s.length; e++) {
+                const o = s[e].querySelector("select");
+                t.select.selectBuild(o);
               }
           }
         }, 0);
@@ -437,20 +437,20 @@
               }|${t.dataset.watchMargin ? t.dataset.watchMargin : "0px"}|${t.dataset.watchThreshold ? t.dataset.watchThreshold : 0}`;
             })
           ).forEach((e) => {
-            let o = e.split("|"),
-              s = { root: o[0], margin: o[1], threshold: o[2] },
+            let s = e.split("|"),
+              o = { root: s[0], margin: s[1], threshold: s[2] },
               i = Array.from(t).filter(function (t) {
                 let e = t.dataset.watchRoot ? t.dataset.watchRoot : null,
-                  o = t.dataset.watchMargin ? t.dataset.watchMargin : "0px",
+                  s = t.dataset.watchMargin ? t.dataset.watchMargin : "0px",
                   i = t.dataset.watchThreshold ? t.dataset.watchThreshold : 0;
                 if (
-                  String(e) === s.root &&
-                  String(o) === s.margin &&
-                  String(i) === s.threshold
+                  String(e) === o.root &&
+                  String(s) === o.margin &&
+                  String(i) === o.threshold
                 )
                   return t;
               }),
-              n = this.getScrollWatcherConfig(s);
+              n = this.getScrollWatcherConfig(o);
             this.scrollWatcherInit(i, n);
           });
       } else
@@ -509,11 +509,11 @@
       this.config.logging && n(`[Наблюдатель]: ${t}`);
     }
     scrollWatcherCallback(t, e) {
-      const o = t.target;
-      this.scrollWatcherIntersecting(t, o),
-        o.hasAttribute("data-watch-once") &&
+      const s = t.target;
+      this.scrollWatcherIntersecting(t, s),
+        s.hasAttribute("data-watch-once") &&
           t.isIntersecting &&
-          this.scrollWatcherOff(o, e),
+          this.scrollWatcherOff(s, e),
         document.dispatchEvent(
           new CustomEvent("watcherCallback", { detail: { entry: t } })
         );
@@ -545,41 +545,41 @@
       let t = document.querySelector(".icon-menu");
       t &&
         t.addEventListener("click", function (t) {
-          e && (o(), document.documentElement.classList.toggle("menu-open"));
+          e && (s(), document.documentElement.classList.toggle("menu-open"));
         });
     })(),
     (function (e) {
       t.popup && t.popup.open("some");
-      const o = document.forms;
-      if (o.length)
-        for (const t of o)
+      const s = document.forms;
+      if (s.length)
+        for (const t of s)
           t.addEventListener("submit", function (t) {
-            s(t.target, t);
+            o(t.target, t);
           }),
             t.addEventListener("reset", function (t) {
               const e = t.target;
               l.formClean(e);
             });
-      async function s(t, o) {
+      async function o(t, s) {
         if (0 === (e ? l.getErrors(t) : 0)) {
           if (t.hasAttribute("data-ajax")) {
-            o.preventDefault();
+            s.preventDefault();
             const e = t.getAttribute("action")
                 ? t.getAttribute("action").trim()
                 : "#",
-              s = t.getAttribute("method")
+              o = t.getAttribute("method")
                 ? t.getAttribute("method").trim()
                 : "GET",
               n = new FormData(t);
             t.classList.add("_sending");
-            const r = await fetch(e, { method: s, body: n });
+            const r = await fetch(e, { method: o, body: n });
             if (r.ok) {
               await r.json();
               t.classList.remove("_sending"), i(t);
             } else alert("Ошибка"), t.classList.remove("_sending");
-          } else t.hasAttribute("data-dev") && (o.preventDefault(), i(t));
+          } else t.hasAttribute("data-dev") && (s.preventDefault(), i(t));
         } else {
-          o.preventDefault();
+          s.preventDefault();
           const e = t.querySelector("._form-error");
           e && t.hasAttribute("data-goto-error") && a(e, !0, 1e3);
         }
@@ -590,8 +590,8 @@
         ),
           setTimeout(() => {
             if (t.popup) {
-              const o = e.dataset.popupMessage;
-              o && t.popup.open(o);
+              const s = e.dataset.popupMessage;
+              s && t.popup.open(s);
             }
           }, 0),
           l.formClean(e),
@@ -603,27 +603,59 @@
         if ("click" === t.type) {
           const e = t.target;
           if (e.closest("[data-goto]")) {
-            const o = e.closest("[data-goto]"),
-              s = o.dataset.goto ? o.dataset.goto : "",
-              i = !!o.hasAttribute("data-goto-header"),
-              n = o.dataset.gotoSpeed ? o.dataset.gotoSpeed : "500";
-            a(s, i, n), t.preventDefault();
+            const s = e.closest("[data-goto]"),
+              o = s.dataset.goto ? s.dataset.goto : "",
+              i = !!s.hasAttribute("data-goto-header"),
+              n = s.dataset.gotoSpeed ? s.dataset.gotoSpeed : "500";
+            a(o, i, n), t.preventDefault();
           }
         } else if ("watcherCallback" === t.type && t.detail) {
           const e = t.detail.entry,
-            o = e.target;
-          if ("navigator" === o.dataset.watch) {
-            const t = o.id,
-              s =
+            s = e.target;
+          if ("navigator" === s.dataset.watch) {
+            const t = s.id,
+              o =
                 (document.querySelector("[data-goto]._navigator-active"),
                 document.querySelector(`[data-goto="${t}"]`));
             e.isIntersecting
-              ? s && s.classList.add("_navigator-active")
-              : s && s.classList.remove("_navigator-active");
+              ? o && o.classList.add("_navigator-active")
+              : o && o.classList.remove("_navigator-active");
           }
         }
       }
       document.addEventListener("click", t),
         document.addEventListener("watcherCallback", t);
+    })(),
+    (function () {
+      c = !0;
+      const t = document.querySelector("header.header"),
+        e = t.hasAttribute("data-scroll-show"),
+        s = t.dataset.scrollShow ? t.dataset.scrollShow : 500,
+        o = t.dataset.scroll ? t.dataset.scroll : 1;
+      let i,
+        n = 0;
+      document.addEventListener("windowScroll", function (r) {
+        const a = window.scrollY;
+        clearTimeout(i),
+          a >= o
+            ? (!t.classList.contains("_header-scroll") &&
+                t.classList.add("_header-scroll"),
+              e &&
+                (a > n
+                  ? t.classList.contains("_header-show") &&
+                    t.classList.remove("_header-show")
+                  : !t.classList.contains("_header-show") &&
+                    t.classList.add("_header-show"),
+                (i = setTimeout(() => {
+                  !t.classList.contains("_header-show") &&
+                    t.classList.add("_header-show");
+                }, s))))
+            : (t.classList.contains("_header-scroll") &&
+                t.classList.remove("_header-scroll"),
+              e &&
+                t.classList.contains("_header-show") &&
+                t.classList.remove("_header-show")),
+          (n = a <= 0 ? 0 : a);
+      });
     })();
 })();
